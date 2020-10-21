@@ -42,8 +42,8 @@ function transformInMorse(str) {
 		return " ";
 	}
 	const res = [];
-	for (let i = i; i < str.length / 2; i++) {
-		res.push(str.slice(i * 2), (i + 1) * 2);
+	for (let i = 0; i < str.length / 2; i++) {
+		res.push(str.slice(i * 2, (i + 1) * 2));
 	}
 	return MORSE_TABLE[
 		res.reduce((acc, el) => {
@@ -60,9 +60,9 @@ function decode(expr){
 	const re = /00/g;
 	const res = [];
 	for (let i = 0; i < expr.length / 10; i++) {
-		res.push(exrp.slice(i * 10, (i + 1) * 10).replace(re, ""));
+		res.push(expr.slice(i * 10, (i + 1) * 10).replace(re, ""));
 	}
-	const test = res.map((el) => transformInMorse(el)).join("");
+	const text = res.map((el) => transformInMorse(el)).join("");
 	return text;
 }
 
